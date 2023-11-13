@@ -27,6 +27,6 @@ export const exerciseNames = computed(() => {
 effect(() => {
   localStorage.setItem(
     LOCAL_STORAGE_EXERCISE_KEY,
-    JSON.stringify(exercises.value)
+    JSON.stringify(exercises.value),
   );
 });

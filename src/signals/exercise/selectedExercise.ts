@@ -9,15 +9,15 @@ const getSelectedExerciseFromLS = (): string[] | null => {
 };
 
 export const selectedExercisesNames = signal<string[] | null>(
-  getSelectedExerciseFromLS()
+  getSelectedExerciseFromLS(),
 );
 
 export const selectedExercises = computed(() => {
   if (selectedExercisesNames.value === null) {
     return [];
   }
-  return exercises.value.filter((exercise) =>
-    selectedExercisesNames.value?.includes(exercise.name)
+  return exercises.value.filter(
+    (exercise) => selectedExercisesNames.value?.includes(exercise.name),
   );
 });
 
@@ -31,6 +31,6 @@ export const selectedSets = computed(() => {
 effect(() => {
   localStorage.setItem(
     LOCAL_STORAGE_SELECTED_EXERCISE_KEY,
-    JSON.stringify(selectedExercisesNames.value) || ""
+    JSON.stringify(selectedExercisesNames.value) || "",
   );
 });

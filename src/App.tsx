@@ -3,8 +3,8 @@ import { SideBar } from "./components/SideBar";
 
 function App() {
   return (
-    <div className="App overflow-y-scroll no-scrollbar h-full">
-      <div className="grid grid-cols-4 h-full">
+    <div className="App no-scrollbar h-full overflow-y-scroll">
+      <div className="grid h-full grid-cols-4">
         <div className="col-span-3">
           <Chart />
         </div>

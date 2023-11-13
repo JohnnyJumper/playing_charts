@@ -16,21 +16,21 @@ export default function AddExerciseForm({
   const SetDateButton = forwardRef(
     (
       _props: { value: string; onClick: () => void },
-      ref: ForwardedRef<HTMLButtonElement>
+      ref: ForwardedRef<HTMLButtonElement>,
     ) => (
       <button
-        className="btn btn-xs  btn-primary"
+        className="btn btn-primary  btn-xs"
         ref={ref}
         onClick={_props.onClick}
       >
         Set date
       </button>
-    )
+    ),
   );
 
   return (
-    <div className="flex flex-col items-center  w-full h-94">
-      <h3 className="font-bold text-lg pb-3">Please add your exercise!</h3>
+    <div className="h-94 flex w-full  flex-col items-center">
+      <h3 className="pb-3 text-lg font-bold">Please add your exercise!</h3>
       <input
         type="text"
         placeholder="Exercise Name"
@@ -38,7 +38,7 @@ export default function AddExerciseForm({
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <div className="flex w-full items-center pt-3 px-3">
+      <div className="flex w-full items-center px-3 pt-3">
         <h4 className="text-lg">Date: {formatDate(date)}</h4>
         <div className="divider divider-horizontal select-none" />
 
@@ -56,9 +56,9 @@ export default function AddExerciseForm({
         />
       </div>
       <div className="divider divider-vertical select-none" />
-      <div className="flex flex-col items-center justify-center w-full">
+      <div className="flex w-full flex-col items-center justify-center">
         {sets.map((set, index) => (
-          <div key={index} className="py-4 w-full">
+          <div key={index} className="w-full py-4">
             <h3>Set # {index + 1}</h3>
             <input
               type="number"
@@ -70,8 +70,8 @@ export default function AddExerciseForm({
                   prev.map((set, setIndex) =>
                     setIndex === index
                       ? { weight: parseInt(e.target.value), reps: set.reps }
-                      : set
-                  )
+                      : set,
+                  ),
                 )
               }
             />
@@ -85,8 +85,8 @@ export default function AddExerciseForm({
                   prev.map((set, setIndex) =>
                     setIndex === index
                       ? { weight: set.weight, reps: parseInt(e.target.value) }
-                      : set
-                  )
+                      : set,
+                  ),
                 )
               }
             />

@@ -42,14 +42,14 @@ export default function Chart() {
   const colorGenerator = getNextColor();
 
   function createDataSet(
-    exerciseName: string
+    exerciseName: string,
   ): [
     ChartDataset<"line", number | number[] | Point | BubbleDataPoint | null>,
-    string[]
+    string[],
   ] {
     const label = exerciseName;
     const exercises = selectedExercises.value.filter(
-      (exercise) => exercise.name === exerciseName
+      (exercise) => exercise.name === exerciseName,
     );
 
     return [
@@ -72,12 +72,12 @@ export default function Chart() {
     }
 
     const dataSets = selected.map((selectedExerciseName) =>
-      createDataSet(selectedExerciseName)
+      createDataSet(selectedExerciseName),
     );
 
     const dates = dataSets.map((dataSet) => dataSet[1]);
     const longestSample = dates.reduce((longest, current) =>
-      current.length > longest.length ? current : longest
+      current.length > longest.length ? current : longest,
     );
 
     const data = {
@@ -98,33 +98,31 @@ export default function Chart() {
   const removeSelected = (name: string) => {
     selectedExercisesNames.value =
       selectedExercisesNames.value?.filter(
-        (exerciseName) => exerciseName !== name
+        (exerciseName) => exerciseName !== name,
       ) ?? [];
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center px-4">
-      <div className="flex flex-col items-center mb-4">
+    <div className="flex h-screen flex-col justify-center px-4">
+      <div className="mb-4 flex flex-col items-center">
         <h1 className="text-xl font-bold">Selected Exercises:</h1>
 
         {selectedExercisesNames.value?.map((name) => (
-          <div className="flex items-center w-60 justify-between my-2 border p-2 select-none">
+          <div
+            className="my-2s flex w-60 select-none  items-center justify-between border p-2"
+            key={name}
+          >
             <div
               style={{
-                backgroundColor: `${
-                  lineData?.datasets.find((dataset) => dataset.label === name)
-                    ?.borderColor
-                }`,
+                backgroundColor: `${lineData?.datasets.find(
+                  (dataset) => dataset.label === name,
+                )?.borderColor}`,
               }}
-              className="
-              
-              w-5
-              h-5
-            "
+              className="h-5 w-5"
             ></div>
             <p className="text-md">{name}</p>
             <button
-              className="btn btn-xs btn-primary"
+              className="btn btn-primary btn-xs"
               onClick={() => removeSelected(name)}
             >
               x
@@ -136,12 +134,12 @@ export default function Chart() {
           <p> Nothing is selected</p>
         )}
       </div>
-      <div className="flex justify-center mb-4">
+      <div className="mb-4 flex justify-center">
         <button className="btn btn-primary" onClick={() => clearSelected()}>
           Clear All
         </button>
       </div>
-      <div className="w-full flex justify-center items-center">
+      <div className="flex w-full items-center justify-center">
         {lineData && (
           <Line
             redraw={true}

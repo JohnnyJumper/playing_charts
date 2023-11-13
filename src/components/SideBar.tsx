@@ -24,23 +24,23 @@ export const SideBar: React.FC<{}> = ({}) => {
 
   const deleteExercise = (name: string) => {
     exercises.value = exercises.value.filter(
-      (exercise) => exercise.name !== name
+      (exercise) => exercise.name !== name,
     );
   };
 
   return (
-    <div className="flex flex-col select-none bg-primary-content">
-      <div className="border-b-2 border-accent w-full flex justify-center items-center py-5">
+    <div className="flex select-none flex-col bg-primary-content">
+      <div className="flex w-full items-center justify-center border-b-2 border-accent py-5">
         <p className="self-center">Exercises</p>
       </div>
       <ul className="list-none">
         {names.map((name) => (
           <li
-            className={`p-4 border border-accent ${
+            className={`border border-accent p-4 ${
               selectedNames?.includes(name)
                 ? "bg-primary-content"
                 : "bg-info-content"
-            } hover:bg-secondary-content flex justify-between items-center`}
+            } flex items-center justify-between hover:bg-secondary-content`}
             onClick={() => {
               if (selectedNames?.includes(name) === false) {
                 selectedExercisesNames.value = [
@@ -53,7 +53,7 @@ export const SideBar: React.FC<{}> = ({}) => {
           >
             {name}
             <button
-              className="btn btn-xs btn-secondary"
+              className="btn btn-secondary btn-xs"
               onClick={() => deleteExercise(name)}
             >
               x
