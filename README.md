@@ -57,7 +57,6 @@ The application serves as a tool for tracking exercises. Use the button in the b
 The project follows a standard structure for a Vite + TypeScript + React application. Key directories include:
 
 - `src/`: Contains the source code.
-- `public/`: Includes static assets used in the application.
 
 ## Contributing
 
